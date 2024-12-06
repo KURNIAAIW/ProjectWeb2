@@ -17,3 +17,29 @@ if (count($product_ids) !== count($quantities)) {
   header("Location: /admin/transaksi_offline.php?error=Invalid product data.");
   exit();
 }
+
+// Begin transaction for database integrity
+$conn->begin_transaction();
+try {
+  $stmt = $conn->prepare("
+    INSERT INTO transactions 
+    (transaction_id, user_id, product_id, quantity, type, payment_proof, total_cost, user_cost, refund, payment_method, is_confirmed) 
+    VALUES (?, ?, ?, ?, 'offline', ?, ?, ?, ?, ?, 1)
+");
+
+  foreach ($product_ids as $index => $product_id) {
+    $quantity = $quantities[$index];
+    $stmt->bind_param(
+      "siiisddds",
+      $transaction_id,
+      $customer_name,
+      $product_id,
+      $quantity,
+      $fileName,
+      $total_cost,
+      $user_cost,
+      $refund,
+      $payment_method
+    );
+    $stmt->execute();
+  }
