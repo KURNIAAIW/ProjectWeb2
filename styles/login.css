@@ -1,0 +1,9 @@
+body {
+  /* background-image: url(../assets/background.avif); */
+  /* background-size: cover; */
+  background-color: #fefce8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

@@ -1,0 +1,45 @@
+tr.bg-queue td,
+tr.bg-queue th,
+.bg-queue {
+  background-color: #fce8ac;
+}
+
+.text-queue {
+  color: #d5aa28;
+}
+
+tr.bg-pending td,
+tr.bg-pending th,
+.bg-pending {
+  background-color: #f9cfbe;
+}
+.text-pending {
+  color: #c85628;
+}
+
+tr.bg-complete td,
+tr.bg-complete th,
+.bg-complete {
+  background-color: #b5fbc5;
+}
+.text-complete {
+  color: #27c34c;
+}
+
+tr.bg-reject td,
+tr.bg-reject th,
+.bg-reject {
+  background-color: #f8b7bd;
+}
+.text-reject {
+  color: #c22031;
+}
+
+tr.bg-process td,
+tr.bg-process th,
+.bg-process {
+  background-color: #c1dffe;
+}
+.text-process {
+  color: #1f71c2;
+}
