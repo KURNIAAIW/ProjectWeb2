@@ -43,3 +43,17 @@ try {
     );
     $stmt->execute();
   }
+
+   // Commit the transaction
+   $conn->commit();
+   header("Location: ../admin/transaksi_offline.php?success=Transaction data has been saved successfully.");
+   exit();
+ } catch (Exception $e) {
+   // Rollback transaction in case of an error
+   $conn->rollback();
+   header("Location: ../admin/transaksi_offline.php?error=Failed to save transaction: " . $e->getMessage());
+   exit();
+ } finally {
+   $stmt->close();
+ }
+ 
